@@ -1,0 +1,3 @@
+packetsend tid=-1743720849 Event={payload={ballot=33d9f0f0-08c5-11e7-845e-, key=1916154799}, recvNode=0, verb=PAXOS_PREPARE, usrval={}, hashId=-910684983697, sendNode=0, clientRequest=0} [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+packetsend tid=-1743780368 Event={payload={ballot=33d9f0f0-08c5-11e7-845e-, key=1916154799}, recvNode=1, verb=PAXOS_PREPARE, usrval={}, hashId=-910684060176, sendNode=0, clientRequest=0} [[0, 1, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+packetsend tid=-1743774351 Event={payload={ballot=33d9f0f0-08c5-11e7-845e-, key=1916154799}, recvNode=2, verb=PAXOS_PREPARE, usrval={}, hashId=-910683136655, sendNode=0, clientRequest=0} [[0, 0, 1, 0], [0, 0, 0, 0], [0, 0, 0, 0]]

@@ -1,0 +1,2 @@
+false ; An assertion has been violated in node-3.
+Symptom is similar to KUDU-2118, where the node crashes due to deadlock in a thread.
