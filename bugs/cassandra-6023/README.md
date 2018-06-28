@@ -8,7 +8,7 @@
 
 2. Apply the patches to Cassandra
 ```
-  cp -rf /.../distributed-concurrency-benchmark/bugs/cassandra-5925/mc-patches/src/ /.../apache-cassandra-2.0.0-src/src/
+  cp -rf /.../distributed-concurrency-benchmark/bugs/cassandra-6023/mc-patches/src/ /.../apache-cassandra-2.0.0-src/src/
 ```
 
 3. Go to the Cassandra directory and compile the code
