@@ -74,6 +74,7 @@ public final class MessagingService implements MessagingServiceMBean {
   public static final int PROTOCOL_MAGIC = 0xCA552DFA;
 
   /* All verb handler identifiers */
+  /* [DMCK] Create specific verb for each Paxos messages */
   public enum Verb {
     MUTATION,
     @Deprecated
@@ -641,7 +642,12 @@ public final class MessagingService implements MessagingServiceMBean {
   }
   */
 
-  // DMCK
+  /*
+   * [DMCK]
+   * This method will filter out the Paxos messages.
+   * The Paxos messages will be intercepted,
+   * while the normal messages will be sent normally.
+   */
   public void sendOneWay(MessageOut message, int id, InetAddress to) {
     if (message.verb == Verb.PAXOS_PREPARE
         || message.verb == Verb.PAXOS_PROPOSE
@@ -698,6 +704,14 @@ public final class MessagingService implements MessagingServiceMBean {
     return result;
   }
 
+  /*
+   * [DMCK]
+   * Interceptor Thread will delay sending the message.
+   * It will first get the content of the message,
+   * and then send it to DMCK server.
+   * Then, it will wait until DMCK server reply.
+   * After receiving the reply, the message will be sent.
+   */
   private static class InterceptorThread implements Runnable {
 
     private MessageOut message;
