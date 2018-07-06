@@ -35,7 +35,8 @@ public class CommitVerbHandler implements IVerbHandler<Commit>
 
         WriteResponse response = new WriteResponse();
         Tracing.trace("Enqueuing acknowledge to {}", message.from);
-        MessagingService.instance().sendReply(response.createPaxosMessage(), id, message.from); // DMCK
+        // DMCK
+        MessagingService.instance().sendReply(response.createPaxosMessage(), id, message.from);
         // MessagingService.instance().sendReply(response.createMessage(), id, message.from);
     }
 }

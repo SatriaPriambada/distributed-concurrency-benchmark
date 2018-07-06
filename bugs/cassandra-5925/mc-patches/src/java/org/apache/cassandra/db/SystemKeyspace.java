@@ -785,7 +785,11 @@ public class SystemKeyspace
             return new PaxosState(key, metadata);
         UntypedResultSet.Row row = results.one();
 
-        // DMCK
+        /*
+         * [DMCK]
+         * Notify to DMCK when there is a NullPointerException caused by
+         * reading the value of "in_progress_ballot" from the result row.
+         */
         try {
             UUID in_progress_ballot = row.getUUID("in_progress_ballot");
         } catch (NullPointerException npe) {

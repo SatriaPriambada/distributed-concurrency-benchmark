@@ -542,7 +542,11 @@ public class CassandraDaemon
         public boolean isRunning();
     }
 
-    // DMCK
+    /*
+     * [DMCK]
+     * Waits for instruction from DMCK to read data from tests table
+     * Reads the data and writes it to temp-verify file
+     */
     private class ReadDataWatcher implements Runnable {
         long nodeId;
 

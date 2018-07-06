@@ -17,15 +17,6 @@
  */
 package org.apache.cassandra.service;
 
-// DMCK
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.RandomAccessFile;
-import java.nio.channels.FileLock;
-import edu.uchicago.cs.ucare.dmck.interceptor.InterceptionLayer;
-
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
@@ -74,6 +65,15 @@ import org.apache.cassandra.service.paxos.*;
 import org.apache.cassandra.tracing.Tracing;
 import org.apache.cassandra.triggers.TriggerExecutor;
 import org.apache.cassandra.utils.*;
+
+// DMCK
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.RandomAccessFile;
+import java.nio.channels.FileLock;
+import edu.uchicago.cs.ucare.dmck.interceptor.InterceptionLayer;
 
 public class StorageProxy implements StorageProxyMBean
 {
@@ -380,7 +380,12 @@ public class StorageProxy implements StorageProxyMBean
                               ? System.currentTimeMillis()
                               : Math.max(System.currentTimeMillis(), 1 + UUIDGen.unixTimestamp(summary.inProgressCommit.ballot));
             // UUID ballot = UUIDGen.getTimeUUID(ballotMillis);
-            // DMCK
+            /*
+             * [DMCK]
+             * In order to have consistent ballot in each run,
+             * we generate ballot from the predetermined number in ballot file
+             * instead of generating it using current time.
+             */
             long ballotNumber = 0;
             try {
                 RandomAccessFile raf = new RandomAccessFile(System.getProperty("user.dir") + "/ballot", "rw");
@@ -408,7 +413,6 @@ public class StorageProxy implements StorageProxyMBean
             } catch (Exception e) {
                 logger.error("", e);
             }
-
             logger.info("[DMCK] ballotNumber = {}", ballotNumber);
             UUID ballot = UUIDGen.getTimeUUID(ballotNumber);
 

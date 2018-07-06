@@ -91,12 +91,15 @@ public class ColumnFamilyStore implements ColumnFamilyStoreMBean
 
     /* Memtables and SSTables on disk for this column family */
     // private final DataTracker data;
-    // DMCK
-    private DataTracker data;
-
+    
     /* This is used to generate the next index for a SSTable */
     // private final AtomicInteger fileIndexGenerator = new AtomicInteger(0);
-    // DMCK
+    /*
+     * [DMCK]
+     * In order to reset the node states,
+     * we need to be able to change the value of data and fileIndexGenerator.
+     */
+    private DataTracker data;
     private AtomicInteger fileIndexGenerator = new AtomicInteger(0);
     private final int initialFileIndexValue;
 
@@ -2340,7 +2343,10 @@ public class ColumnFamilyStore implements ColumnFamilyStoreMBean
         return truncationRecord == null ? Long.MIN_VALUE : truncationRecord.right;
     }
 
-    // DMCK
+    /*
+     * [DMCK]
+     * Reset the content of memtable when DMCK created memtableReset-<nodeId> file
+     */
     private class MemtableResetWatcher implements Runnable {
         long nodeid;
         public final IPartitioner partitioner;

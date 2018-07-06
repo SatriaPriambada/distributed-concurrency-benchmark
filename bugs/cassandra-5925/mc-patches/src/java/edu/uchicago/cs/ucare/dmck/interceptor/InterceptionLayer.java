@@ -15,6 +15,11 @@ public class InterceptionLayer {
     private static String senderSequencer = "";
     private static String receiverSequencer = "";
 
+    /*
+     * [DMCK]
+     * Sends Paxos event to DMCK.
+     * Blocks the process until DMCK sent a message to run this event.
+     */
     public static void interceptPaxosEvent(
         long sender, long recv, String verb, String payload, String usrval) {
         long eventId = getHashId(sender, recv, verb, payload);

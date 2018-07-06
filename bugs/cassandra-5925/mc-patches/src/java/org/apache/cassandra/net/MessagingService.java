@@ -19,7 +19,6 @@ package org.apache.cassandra.net;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-import edu.uchicago.cs.ucare.dmck.interceptor.InterceptionLayer;
 import java.io.*;
 import java.lang.management.ManagementFactory;
 import java.net.*;
@@ -61,6 +60,9 @@ import org.apache.cassandra.utils.*;
 import org.cliffc.high_scale_lib.NonBlockingHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+// DMCK
+import edu.uchicago.cs.ucare.dmck.interceptor.InterceptionLayer;
 
 public final class MessagingService implements MessagingServiceMBean {
   public static final String MBEAN_NAME = "org.apache.cassandra.net:type=MessagingService";
@@ -671,6 +673,10 @@ public final class MessagingService implements MessagingServiceMBean {
     }
   }
 
+  /*
+   * [DMCK]
+   * This method will return the String representation of the Paxos Verb
+   */
   private static String transformVerbToString(Verb msgVerb) {
     String result = "";
     switch (msgVerb) {
@@ -790,6 +796,10 @@ public final class MessagingService implements MessagingServiceMBean {
   }
   */
 
+  /*
+   * [DMCK]
+   * The original sendOneWay(MessageOut message, int id, InetAddress to) method
+   */
   public void sendMessage(MessageOut message, int id, InetAddress to) {
     if (logger.isTraceEnabled())
       logger.trace(

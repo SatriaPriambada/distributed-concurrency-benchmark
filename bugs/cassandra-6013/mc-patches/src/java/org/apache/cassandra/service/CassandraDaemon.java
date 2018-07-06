@@ -138,6 +138,7 @@ public class CassandraDaemon
     public Server thriftServer;
     public Server nativeServer;
 
+    // DMCK
     private ResetWatcher resetWatcher;
 
     /**

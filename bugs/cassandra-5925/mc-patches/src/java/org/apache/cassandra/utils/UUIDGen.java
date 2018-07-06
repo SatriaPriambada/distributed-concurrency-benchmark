@@ -17,6 +17,14 @@
  */
 package org.apache.cassandra.utils;
 
+import java.net.InetAddress;
+import java.nio.ByteBuffer;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
+import java.util.Random;
+import java.util.UUID;
+
 // DMCK
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -27,15 +35,6 @@ import java.io.RandomAccessFile;
 import java.nio.channels.FileLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.net.InetAddress;
-import java.nio.ByteBuffer;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Collection;
-import java.util.Random;
-import java.util.UUID;
-
 
 /**
  * The goods are here: www.ietf.org/rfc/rfc4122.txt.
@@ -247,7 +246,13 @@ public class UUIDGen
     private static long makeClockSeqAndNode()
     {
         // long clock = new Random(System.currentTimeMillis()).nextLong();
-        long clock = new Random(1485885181909L).nextLong(); // DMCK
+        /*
+         * [DMCK]
+         * In order to have clock in each run,
+         * we generate it using a predetermined number
+         * instead of generating it using current time.
+         */
+        long clock = new Random(1485885181909L).nextLong();
 
         long lsb = 0;
         lsb |= 0x8000000000000000L;                 // variant (2 bits)
