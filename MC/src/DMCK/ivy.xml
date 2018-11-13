@@ -2,5 +2,8 @@
     <info organisation="edu.uchicago.cs.ucare.dmck" module="dmck-core"/>
     <dependencies>
 	<dependency org="com.google.code.gson" name="gson" rev="2.8.2"/>
+    	<dependency org="com.almworks.sqlite4java" name="libsqlite4java-linux-amd64" rev="1.0.392"/>
+	<dependency org="org.slf4j" name="slf4j-api" rev="1.7.21"/>
+    	
     </dependencies>
 </ivy-module>

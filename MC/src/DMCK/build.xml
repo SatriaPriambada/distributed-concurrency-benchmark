@@ -10,8 +10,8 @@
     <property name="version" value="1.0" />
     <property name="final.name" value="${name}-v${version}" />
 
-    <property name="javac.target" value="1.7" />
-    <property name="javac.source" value="1.7" />
+    <property name="javac.target" value="1.8" />
+    <property name="javac.source" value="1.8" />
 
     <property name="src.dir" value="${basedir}/src" />
     <property name="java.src.dir" value="${src.dir}" />
