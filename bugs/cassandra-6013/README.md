@@ -12,20 +12,28 @@
 ```
 
 3. Go to the Cassandra directory and compile the code
-####If you want to use java 8 please update antlr in the build.xml
+#### If you want to use java 8 please update antlr in the build.xml
 
 ```
   cd /.../apache-cassandra-2.0.0-src
   vi build.xml 
   or gedit build.xml 
 ```
-####Replace antlr-3.2.jar with antlr-3.5.2.jar and
+#### Replace antlr-3.2.jar with antlr-3.5.2.jar and
+```
 <dependency groupId="org.antlr" artifactId="antlr" version="3.2"/>
+```
 to
+```
 <dependency groupId="org.antlr" artifactId="antlr" version="3.5.2"/> 
+```
+#### Build your Cassandra
 ```
   cd /.../apache-cassandra-2.0.0-src
   ant
 ```
 
-4. Follow the instruction on /.../distributed-concurrency-benchmark/MC/src/DMCK for each specific bug
+4. Follow further instruction for each specific bug on
+```
+/.../distributed-concurrency-benchmark/MC/src/DMCK 
+```
