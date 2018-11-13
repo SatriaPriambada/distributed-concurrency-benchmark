@@ -8,11 +8,24 @@
 
 2. Apply the patches to Cassandra
 ```
-  cp -rf /.../distributed-concurrency-benchmark/bugs/cassandra-5925/mc-patches/src/ /.../apache-cassandra-2.0.0-src/src/
+  cp -rf /.../distributed-concurrency-benchmark/bugs/cassandra-5925/mc-patches/src/ /.../apache-cassandra-2.0.0-src/
 ```
 
 3. Go to the Cassandra directory and compile the code
+####If you want to use java 8 please update antlr in the build.xml
+
+```
+  cd /.../apache-cassandra-2.0.0-src
+  vi build.xml 
+  or gedit build.xml 
+```
+####Replace antlr-3.2.jar with antlr-3.5.2.jar and
+<dependency groupId="org.antlr" artifactId="antlr" version="3.2"/>
+to
+<dependency groupId="org.antlr" artifactId="antlr" version="3.5.2"/> 
 ```
   cd /.../apache-cassandra-2.0.0-src
   ant
 ```
+
+4. Follow the instruction on /.../distributed-concurrency-benchmark/MC/src/DMCK for each specific bug
