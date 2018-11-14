@@ -3,7 +3,7 @@
     <dependencies>
 	<dependency org="com.google.code.gson" name="gson" rev="2.8.2"/>
     	<dependency org="com.almworks.sqlite4java" name="libsqlite4java-linux-amd64" rev="1.0.392"/>
-	<dependency org="org.slf4j" name="slf4j-api" rev="1.7.21"/>
-    	
+	<dependency org="org.slf4j" name="slf4j-api" rev="1.7.25"/>
+    	<dependency org="org.slf4j" name="slf4j-log4j12" rev="1.7.25"/>
     </dependencies>
 </ivy-module>
